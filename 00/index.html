@@ -20,7 +20,7 @@
       const resultado = document.getElementById("resultado");
 
       btnBuscar.addEventListener("click", async () => {
-        const valorDigitado = cepInput.value.trim;
+        const valorDigitado = cepInput.value;
         var resposta = await fetch(
           `https://viacep.com.br/ws/${valorDigitado}/json/`,
         );
