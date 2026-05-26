@@ -1,0 +1,29 @@
+async function carregarProdutos() {
+    try{
+        //Toda a logica vai aqui
+        const resposta = await fetch(`${API_BASE_URL}/Produtos`);
+        const produtos = await resposta.json();
+        const tbody = document.getElementById("tabela-produtos");
+        tbody.innerHTML = '';
+
+        produtos.forEach(produto => {
+            const novaLinhaDaTabela = document.createElement('tr');
+            novaLinhaDaTabela.innerHTML = `
+                <td>${produto.id}</td>
+                <td>${produto.nome}</td>
+                <td>${produto.preco}</td>
+                <td>${produto.quantidadeEstoque}</td>
+                <td>${produto.fornecedorId}</td>
+              
+                
+            `;
+            tbody.appendChild(novaLinhaDaTabela);
+        });
+
+        console.log(produtos);
+    } catch (error) {
+        console.error('Erro ao carregar os produtos:', error);
+    }
+}
+
+carregarProdutos();
